@@ -1,4 +1,4 @@
-# Lab5-Quicksort
+# Quicksort Lab
 
 ## Briefing: 
 In this lab, you will implement the quicksort algorithm described in the book. Although there are other ways of selecting the pivot value, you should follow the algorithm described in section 10.9 of the book.  You will need to run valgrind on your code to make sure you dont have memory leaks or other errors.  You will need to use a destructor as part of the lab, so you should become familiar with destructors.
