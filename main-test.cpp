@@ -27,7 +27,7 @@ int main() {
 	cout << "EndingIndex "<<endingindex<<endl;
 	//Shoud be EndingIndex 4
 	cout << "Array "<<qsptr->getArray()<<endl;
-  //Should be Array 33,12,23,43,44,75,64,77,55
+  	//Should be Array 33,12,23,43,44,75,64,77,55
 	int pivotleft = qsptr->medianOfThree(0, 3);
 	cout << "Pivotleft "<<pivotleft<<endl;
 	//Should be Pivot 1
@@ -35,17 +35,18 @@ int main() {
 	//Should be Array 12,33,23,43,44,75,64,77,55
 	int leftendingindex = qsptr->partition(0,3,pivotleft);
 	cout << "LeftEndingIndex "<<leftendingindex<<endl;
-	//Shoud be EndingIndex 4
+	//Should be LeftEndingIndex 2
 	cout << "Array "<<qsptr->getArray()<<endl;
-  //Should be Array 33,12,23,43,44,75,64,77,55
+  	//Should be Array 23,12,33,43,44,75,64,77,55
 	int pivotleftleft = qsptr->medianOfThree(0, 1);
 	cout << "Pivotleftleft "<<pivotleftleft<<endl;
+	//Should be Pivotleftleft 0
 	cout << "Array "<<qsptr->getArray()<<endl;
 	//Should be Array 12,23,33,43,44,75,64,77,55
 	int leftleftendingindex = qsptr->partition(0,1,pivotleft);
 	cout << "LeftLeftEndingIndex "<<leftleftendingindex<<endl;
 	//Shoud be EndingIndex 1
 	cout << "Array "<<qsptr->getArray()<<endl;
-  //Should be Array 12,23,33,43,44,75,64,77,55
+  	//Should be Array 12,23,33,43,44,75,64,77,55
 	return 0;
 }
