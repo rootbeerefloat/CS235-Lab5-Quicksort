@@ -128,14 +128,16 @@ Now implement
 	*/
 	virtual int partition(int left, int right, int pivotIndex) = 0;
 ```
-So, given the data resulting from medianOfThree()
+So, given the data resulting from medianOfThree():
 ```
 33,75,23,43,44,12,64,77,55
 left = 0, right = 8, pivotIndex = 4
-First select the value on the left of the pivot that is greater than the pivot (75) and exchange it with a value on the right of the pivot that is less than the pivot with the greatest index (12) and exchange the items in the array.
-33,12,23,43,44,75,64,77,55
-Continue to iterate until all values to the left of the pivot are less than the pivot and all values to the right of the pivot are greater than the pivot.
 ```
+You can now call
+```
+pivotEnd = partition(0, 8, 4);
+```
+
 Now you just need to implement
 ```c++
 	/*
@@ -147,6 +149,6 @@ Now you just need to implement
 	* Does nothing if the array is empty.
 	*/
 	virtual void sortAll() = 0;
-  ```
-  sortAll will recursively call itself using medianOfThree() and partition()
+```
+You will need to write your own function for recursively calling `medianOfThree()` and `partition()`. `sortAll` should call this function with the appropriate starting parameters.
 
