@@ -9,9 +9,13 @@ using namespace std;
 
 class QS : public QSInterface
 {
+private:
+    int *array;
+    int size;
+
 public:
-	QS() {}
-	~QS() {}
+	QS();
+	~QS();
 
 	/*
 	* sortAll()

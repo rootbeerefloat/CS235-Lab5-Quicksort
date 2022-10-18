@@ -1,7 +1,13 @@
 #include "QS.h"
 
-QS::QS() {}
-QS::~QS() {}
+QS::QS() {
+    cout << "QS constructor called" << endl;
+    
+    size = 0;
+}
+QS::~QS() {
+    cout << "QS destructor called" << endl;
+}
 
 /*
 * sortAll()
@@ -38,7 +44,25 @@ void QS::sortAll() {}
 * @return
 *		the index of the pivot (middle index); -1 if provided with invalid input
 */
-int QS::medianOfThree(int left, int right) {}
+int QS::medianOfThree(int left, int right) {
+    int middle = (left + right) / 2;
+    if (left >= right || left < 0 || right < 0 || left >= size || right >= size) {
+        return -1;
+    }
+    while(array[left] > array[middle] || array[middle] > array[right]) {
+        if (array[left] > array[middle]) {
+            int temp = array[left];
+            array[left] = array[middle];
+            array[middle] = temp;
+        }
+        if (array[middle] > array[right]) {
+            int temp = array[middle];
+            array[middle] = array[right];
+            array[right] = temp;
+        }
+    }
+    return middle;
+}
 
 /*
 * Partitions a subarray around a pivot value selected according to
@@ -63,7 +87,9 @@ int QS::medianOfThree(int left, int right) {}
 *		the pivot's ending index after the partition completes; -1 if
 * 		provided with bad input
 */
-int QS::partition(int left, int right, int pivotIndex) {}
+int QS::partition(int left, int right, int pivotIndex) {
+    return -1;
+}
 
 /*
 * Produces a comma delimited string representation of the array. For example: if my array
@@ -76,12 +102,16 @@ int QS::partition(int left, int right, int pivotIndex) {}
 * @return
 *		the string representation of the current array
 */
-string QS::getArray() const {}
+string QS::getArray() const {
+    return "";
+}
 
 /*
 * Returns the number of elements which have been added to the array.
 */
-int QS::getSize() const {}
+int QS::getSize() const {
+    return -1;
+}
 
 /*
 * Adds the given value to the end of the array starting at index 0.
@@ -93,7 +123,9 @@ int QS::getSize() const {}
 * If the array is filled, do nothing.
 * returns true if a value was added, false otherwise.
 */
-bool QS::addToArray(int value) {}
+bool QS::addToArray(int value) {
+    return false;
+}
 
 /*
 * Dynamically allocates an array with the given capacity.
@@ -105,7 +137,9 @@ bool QS::addToArray(int value) {}
 * @return
 *		true if the array was created, false otherwise
 */
-bool QS::createArray(int capacity) {}
+bool QS::createArray(int capacity) {
+    return false;
+}
 
 /*
 * Resets the array to an empty or NULL state.
