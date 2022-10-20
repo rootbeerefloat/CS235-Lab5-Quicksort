@@ -107,7 +107,9 @@ string QS::getArray() const {
     string arrayString = "";
     for (int i = 0; i < size; i++) {
         arrayString += to_string(array[i]);
-        arrayString += ",";
+        if (i != size - 1) {
+            arrayString += ",";
+        }
     }
     return "";
 }
