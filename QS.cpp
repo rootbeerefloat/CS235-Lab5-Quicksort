@@ -161,5 +161,8 @@ bool QS::createArray(int capacity) {
 /*
 * Resets the array to an empty or NULL state.
 */
-void QS::clear() {}
+void QS::clear() {
+    delete [] array;
+    array = NULL;
+}
 	
