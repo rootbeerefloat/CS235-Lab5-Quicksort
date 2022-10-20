@@ -159,7 +159,12 @@ int QS::getSize() const {
 * returns true if a value was added, false otherwise.
 */
 bool QS::addToArray(int value) {
-    return false;
+    if (size == cap) {
+        return false;
+    }
+    array[size] = value;
+    size++;
+    return true;
 }
 
 /*
