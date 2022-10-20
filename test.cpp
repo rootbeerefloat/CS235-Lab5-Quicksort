@@ -3,13 +3,12 @@
 #include "QS.h"
 
 int main() {
+    srand(time(NULL));
     QS quickSortArray;
     quickSortArray.createArray(10);
     for (int i = 0; i < 10; i++) {
-        quickSortArray.addToArray(10 - i);
+        quickSortArray.addToArray(rand() % 100);
     }
-    cout << quickSortArray.getArray() << endl;
-    quickSortArray.medianOfThree(0, 9);
-    cout << quickSortArray.getArray() << endl;
+    quickSortArray.sortAll();
     return 0;
 }

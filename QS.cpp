@@ -17,7 +17,22 @@ QS::~QS() {
 *
 * Does nothing if the array is empty.
 */
-void QS::sortAll() {}
+void QS::sortAll() {
+    if (size == 0) {
+        return;
+    }
+    recursiveSort(0, size - 1);
+}
+
+void QS::recursiveSort(int left, int right) {
+    if (left < right) {
+        int pivot = partition(left, right, medianOfThree(left, right));
+        cout << "Left: " << left << " Pivot: " << pivot << " Right: " << right << endl;
+        cout << getArray() << endl;
+        recursiveSort(left, pivot - 1);
+        recursiveSort(pivot + 1, right);
+    }
+}
 
 /*
 * medianOfThree()
@@ -91,6 +106,14 @@ int QS::medianOfThree(int left, int right) {
 int QS::partition(int left, int right, int pivotIndex) {
     if (array == NULL || left >= right || left < 0 || right < 0 || left >= size || right >= size || pivotIndex < left || pivotIndex > right) {
         return -1;
+    }
+    if (right - left == 1) {
+        if (array[left] > array[right]) {
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+        }
+        return right;
     }
     int pivot = array[pivotIndex];
     int temp = array[left];

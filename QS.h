@@ -28,6 +28,8 @@ public:
 	*/
 	void sortAll();
 
+	void recursiveSort(int left, int right);
+
 	/*
 	* medianOfThree()
 	*
