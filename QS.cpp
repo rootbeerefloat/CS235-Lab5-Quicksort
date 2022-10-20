@@ -118,7 +118,7 @@ string QS::getArray() const {
 * Returns the number of elements which have been added to the array.
 */
 int QS::getSize() const {
-    return -1;
+    return size;
 }
 
 /*
