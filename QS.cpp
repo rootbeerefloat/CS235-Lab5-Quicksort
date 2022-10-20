@@ -27,8 +27,6 @@ void QS::sortAll() {
 void QS::recursiveSort(int left, int right) {
     if (left < right) {
         int pivot = partition(left, right, medianOfThree(left, right));
-        cout << "Left: " << left << " Pivot: " << pivot << " Right: " << right << endl;
-        cout << getArray() << endl;
         recursiveSort(left, pivot - 1);
         recursiveSort(pivot + 1, right);
     }
