@@ -104,6 +104,11 @@ int QS::partition(int left, int right, int pivotIndex) {
 *		the string representation of the current array
 */
 string QS::getArray() const {
+    string arrayString = "";
+    for (int i = 0; i < size; i++) {
+        arrayString += to_string(array[i]);
+        arrayString += ",";
+    }
     return "";
 }
 
