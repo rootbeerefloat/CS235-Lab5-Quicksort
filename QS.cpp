@@ -2,6 +2,8 @@
 
 QS::QS() {
     array = NULL;
+    size = 0;
+    cap = 0;
     cout << "QS constructor called" << endl;
 }
 QS::~QS() {
@@ -111,7 +113,7 @@ string QS::getArray() const {
             arrayString += ",";
         }
     }
-    return "";
+    return arrayString;
 }
 
 /*
@@ -164,5 +166,6 @@ bool QS::createArray(int capacity) {
 void QS::clear() {
     delete [] array;
     array = NULL;
+    size = 0;
 }
 	
