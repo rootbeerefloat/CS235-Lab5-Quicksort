@@ -4,10 +4,9 @@ QS::QS() {
     array = NULL;
     size = 0;
     cap = 0;
-    cout << "QS constructor called" << endl;
 }
 QS::~QS() {
-    cout << "QS destructor called" << endl;
+    delete array;
 }
 
 /*
@@ -63,7 +62,6 @@ int QS::medianOfThree(int left, int right) {
             array[right] = temp;
         }
     }
-    cout << "Left" << array[left] << "Middle" << array[middle] << "Right" << array[right] << endl;
     return middle;
 }
 
@@ -178,9 +176,9 @@ bool QS::addToArray(int value) {
 *		true if the array was created, false otherwise
 */
 bool QS::createArray(int capacity) {
-    if (!array == NULL){
+    if (cap > 0){
         delete [] array;
-        array == NULL;
+        array = NULL;
     }
     if (capacity <= 0) {
         return false;
