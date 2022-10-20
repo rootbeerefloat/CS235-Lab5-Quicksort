@@ -4,6 +4,7 @@
 
 int main() {
     QS quickSortArray;
+    quickSortArray.medianOfThree(0, 2);
     delete &quickSortArray;
     return 0;
 }

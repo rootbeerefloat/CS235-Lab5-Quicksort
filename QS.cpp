@@ -1,9 +1,8 @@
 #include "QS.h"
 
 QS::QS() {
+    array = NULL;
     cout << "QS constructor called" << endl;
-    
-    size = 0;
 }
 QS::~QS() {
     cout << "QS destructor called" << endl;
@@ -46,6 +45,7 @@ void QS::sortAll() {}
 */
 int QS::medianOfThree(int left, int right) {
     int middle = (left + right) / 2;
+    
     if (left >= right || left < 0 || right < 0 || left >= size || right >= size) {
         return -1;
     }
@@ -61,6 +61,7 @@ int QS::medianOfThree(int left, int right) {
             array[right] = temp;
         }
     }
+    cout << "Left" << array[left] << "Middle" << array[middle] << "Right" << array[right] << endl;
     return middle;
 }
 
@@ -138,7 +139,16 @@ bool QS::addToArray(int value) {
 *		true if the array was created, false otherwise
 */
 bool QS::createArray(int capacity) {
-    return false;
+    if (!array == NULL){
+        delete [] array;
+        array == NULL;
+    }
+    if (capacity <= 0) {
+        return false;
+    }
+    array = new int[capacity];
+    cap = capacity;
+    return true;
 }
 
 /*

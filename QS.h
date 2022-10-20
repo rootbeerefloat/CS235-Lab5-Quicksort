@@ -12,6 +12,7 @@ class QS : public QSInterface
 private:
     int *array;
     int size;
+	int cap;
 
 public:
 	QS();
