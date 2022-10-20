@@ -91,7 +91,32 @@ int QS::medianOfThree(int left, int right) {
 * 		provided with bad input
 */
 int QS::partition(int left, int right, int pivotIndex) {
-    return -1;
+    if (array == NULL || left >= right || left < 0 || right < 0 || left >= size || right >= size || pivotIndex < left || pivotIndex > right) {
+        return -1;
+    }
+    int pivot = array[pivotIndex];
+    int temp = array[left];
+    array[left] = array[pivotIndex];
+    array[pivotIndex] = temp;
+    int up = left + 1;
+    int down = right;
+    while (up < down){
+        while (array[up] < pivot && up < right) {
+            up++;
+        }
+        while (array[down] > pivot && down > left) {
+            down--;
+        }
+        if (up < down) {
+            int temp = array[up];
+            array[up] = array[down];
+            array[down] = temp;
+        }
+    }
+    int temp2 = array[left];
+    array[left] = array[down];
+    array[down] = temp2;
+    return down;
 }
 
 /*
