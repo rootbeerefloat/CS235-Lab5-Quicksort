@@ -7,6 +7,8 @@ QS::QS() {
 }
 QS::~QS() {
     delete array;
+    array = NULL;
+    size = 0;
 }
 
 /*
@@ -26,9 +28,26 @@ void QS::sortAll() {
 
 void QS::recursiveSort(int left, int right) {
     if (left < right) {
-        int pivot = partition(left, right, medianOfThree(left, right));
-        recursiveSort(left, pivot - 1);
-        recursiveSort(pivot + 1, right);
+        int pivot = medianOfThree(left, right);
+        int i = left;
+        int j = right;
+        while (i < j) {
+            while (array[i] <= array[pivot]) {
+                i++;
+            }
+            while (array[j] >= array[pivot]) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        recursiveSort(left, j);
+        recursiveSort(i, right);
     }
 }
 
@@ -102,6 +121,7 @@ int QS::medianOfThree(int left, int right) {
 * 		provided with bad input
 */
 int QS::partition(int left, int right, int pivotIndex) {
+    //cout << "Partitioning " << left << " to " << right << " around " << pivotIndex << endl;
     if (array == NULL || left >= right || left < 0 || right < 0 || left >= size || right >= size || pivotIndex < left || pivotIndex > right) {
         return -1;
     }
@@ -120,21 +140,29 @@ int QS::partition(int left, int right, int pivotIndex) {
     int up = left + 1;
     int down = right;
     while (up < down){
+        //cout << "up: " << array[up] << " down: " << array[down] << endl;
+        //cout << pivot << endl;
+        if (array[up] == array[down]){
+            up++;
+        }
         while (array[up] < pivot && up < right) {
             up++;
+            //cout << "Incrementing up" << endl;
         }
         while (array[down] > pivot && down > left) {
             down--;
+            //cout << "Decrementing down" << endl;
         }
         if (up < down) {
-            int temp = array[up];
-            array[up] = array[down];
-            array[down] = temp;
+        int temp = array[up];
+        array[up] = array[down];
+        array[down] = temp;
         }
     }
     int temp2 = array[left];
     array[left] = array[down];
     array[down] = temp2;
+    //cout << "Partitioned around " << down << endl;
     return down;
 }
 
@@ -150,6 +178,7 @@ int QS::partition(int left, int right, int pivotIndex) {
 *		the string representation of the current array
 */
 string QS::getArray() const {
+    //cout << "Getting array" << endl;
     string arrayString = "";
     for (int i = 0; i < size; i++) {
         arrayString += to_string(array[i]);
@@ -157,6 +186,7 @@ string QS::getArray() const {
             arrayString += ",";
         }
     }
+    //cout << "Array string: " << arrayString << endl;
     return arrayString;
 }
 
@@ -178,11 +208,14 @@ int QS::getSize() const {
 * returns true if a value was added, false otherwise.
 */
 bool QS::addToArray(int value) {
+    // cout << "array is " << getArray() << endl;
+    // cout << "Adding " << value << endl;
     if (size == cap) {
         return false;
     }
     array[size] = value;
     size++;
+    //cout << "New array is " << getArray() << endl;
     return true;
 }
 
@@ -197,9 +230,13 @@ bool QS::addToArray(int value) {
 *		true if the array was created, false otherwise
 */
 bool QS::createArray(int capacity) {
+    //cout << "Creating new array with capacity " << capacity << endl;
+    //cout << "capacity is " << cap << endl;
     if (cap > 0){
-        delete [] array;
+        //cout << "Deleting old array" << endl;
+        delete array;
         array = NULL;
+        size = 0;
     }
     if (capacity <= 0) {
         return false;
@@ -213,7 +250,7 @@ bool QS::createArray(int capacity) {
 * Resets the array to an empty or NULL state.
 */
 void QS::clear() {
-    delete [] array;
+    delete array;
     array = NULL;
     size = 0;
 }
